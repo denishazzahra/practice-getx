@@ -1,11 +1,14 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:practice_getx/core/service/user_service.dart';
 
 import '../../../data/models/user_model.dart';
 
 class CreateUserController extends GetxController {
-  final genders = ['Male', 'Female'];
+  final List<String> genders = ['Male', 'Female'];
   Rx<UserModel> user = UserModel().obs;
+  Rx<TextEditingController> name = TextEditingController().obs;
+  Rx<TextEditingController> email = TextEditingController().obs;
 
   void setGender(String gender) {
     user.update((val) {

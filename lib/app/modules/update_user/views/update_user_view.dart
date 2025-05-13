@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/widget/user_form.dart';
-import '../controllers/create_user_controller.dart';
+import '../controllers/update_user_controller.dart';
 
-class CreateUserView extends GetView<CreateUserController> {
-  const CreateUserView({super.key});
+class UpdateUserView extends GetView<UpdateUserController> {
+  const UpdateUserView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create New User'),
+        title: const Text('Update User'),
         centerTitle: true,
       ),
-      body: userForm(controller, 'Create'),
+      body: userForm(controller, 'Update'),
     );
   }
 }

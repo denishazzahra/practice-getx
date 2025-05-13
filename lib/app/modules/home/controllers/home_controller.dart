@@ -30,4 +30,20 @@ class HomeController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  void deleteUser(int id) async {
+    try {
+      final response = await UserService.deleteUser(id);
+      if (response['status'] == 'Success') {
+        userList.removeWhere((user) => user.id == id);
+        Get.snackbar('Success', 'User deleted successfully');
+      } else if (response.containsKey('message')) {
+        throw Exception(response['message']);
+      } else {
+        throw Exception('Failed to delete user');
+      }
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    }
+  }
 }

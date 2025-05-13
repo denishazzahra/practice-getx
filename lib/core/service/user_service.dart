@@ -47,12 +47,12 @@ class UserService {
     }
   }
 
-  static Future<Map<String, dynamic>> updateUser(int id, UserModel user) async {
+  static Future<Map<String, dynamic>> updateUser(UserModel user) async {
     try {
       final response = await http.put(
-        Uri.parse('${ApiConfig.baseUrl}/$id'),
+        Uri.parse('${ApiConfig.baseUrl}/${user.id}'),
         headers: <String, String>{'Content-Type': 'application/json'},
-        body: jsonEncode(user),
+        body: jsonEncode(user.toJson()),
       );
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
